@@ -134,4 +134,50 @@ export class HttpClient {
  * @version version not set
  */
 export class Api extends HttpClient {
+    constructor() {
+        super(...arguments);
+        /**
+         * No description
+         *
+         * @tags Query
+         * @name QueryNextGame
+         * @summary Queries a nextGame by index.
+         * @request GET:/alice/checkers/checkers/nextGame
+         */
+        this.queryNextGame = (params = {}) => this.request({
+            path: `/alice/checkers/checkers/nextGame`,
+            method: "GET",
+            format: "json",
+            ...params,
+        });
+        /**
+         * No description
+         *
+         * @tags Query
+         * @name QueryStoredGameAll
+         * @summary Queries a list of storedGame items.
+         * @request GET:/alice/checkers/checkers/storedGame
+         */
+        this.queryStoredGameAll = (query, params = {}) => this.request({
+            path: `/alice/checkers/checkers/storedGame`,
+            method: "GET",
+            query: query,
+            format: "json",
+            ...params,
+        });
+        /**
+         * No description
+         *
+         * @tags Query
+         * @name QueryStoredGame
+         * @summary Queries a storedGame by index.
+         * @request GET:/alice/checkers/checkers/storedGame/{index}
+         */
+        this.queryStoredGame = (index, params = {}) => this.request({
+            path: `/alice/checkers/checkers/storedGame/${index}`,
+            method: "GET",
+            format: "json",
+            ...params,
+        });
+    }
 }
